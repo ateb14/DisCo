@@ -170,7 +170,9 @@ def main_worker(args):
             eval_dataset)
 
 
+        logger.info('Loading checkpoint...')
         trainer = Agent_LDM(args=args, model=model)
+        logger.info('Checkpoint loaded, start evaluation...')
         trainer.eval(eval_dataloader, inner_collect_fn=inner_collect_fn,
                      enc_dec_only='enc_dec_only' in args.eval_save_filename)
 

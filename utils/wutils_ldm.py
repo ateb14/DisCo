@@ -360,6 +360,9 @@ def data2file(data, filename, type=None, override=False, printable=False, **kwar
 def file2data(filename, type=None, printable=True, **kwargs):
     dirname, rootname, extname = split_filename(filename)
     print_load_flag = True
+    # logger.info('filename: %s, type: %s' % (filename, type))
+    # logger.info('extname: %s' % extname)
+    # exit(0)
     if type:
         extname = type
     if extname == 'pkl':
@@ -1115,6 +1118,8 @@ class Trainer:
     def load_checkpoint(self, checkpoint_filename):
         if hasattr(self.model, "module"):
             raise ValueError("Please do not load checkpoint into wrapped models, ensure self.models is CPU.")
+        
+        logger.info('Hello! I am loading checkpoint!!!')
         checkpoint = file2data(checkpoint_filename, map_location='cpu')
         adaptively_load_state_dict(self.model, checkpoint['models'])
         if self.optimizers:

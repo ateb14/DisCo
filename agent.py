@@ -982,16 +982,22 @@ class Agent():
 class Agent_LDM(Agent):
     def __init__(self, args, model, optimizer=None, scheduler=None):
         super().__init__(args, model, optimizer, scheduler)
+        # print(model.state_dict().keys())
+        # exit(0)
         ### add to use stage 1 pretrain attr model to initialize the weight
         if self.args.stage1_pretrain_path is not None:
             print('### Using stage 1 attribute pretrain model to initialize the weights ###')
             pretrain_model_state = file2data(self.args.stage1_pretrain_path, map_location='cpu')
+            # print(pretrain_model_state['module'].keys())
+            # exit(0)
             # pre-process to the weight name
             new_state = {}
             for k, v in pretrain_model_state['module'].items():
                 if k.startswith('controlnet.'):
-                    new_key = k[:11] + 'nets.1.' + k[11:]
-                    new_state[new_key] = v
+                    new_state[k] = v
+                    # new_key = k[:11] + 'nets.1.' + k[11:] # the old one is wrong!!
+                    # new_key = k[:11] + 'nets.1.' + k[18:] # replace controlnet.nets.0. with controlnet.nets.1.
+                    # new_state[new_key] = v
                 else:
                     new_state[k] = v
             ### load

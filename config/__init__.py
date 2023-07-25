@@ -9,8 +9,13 @@ class BasicArgs:
     use_tqdm = True
     debug = False
 
+    # print(platform.node()) ji-jupyter-7029986031106727936-master-0
+    
+    if platform.node() == 'ji-jupyter-7029986031106727936-master-0':
+        logger.info('ZJU A100 detected')
+        root_dir = '/home/DisCo/test'
     # Chenfei's personal Nodes
-    if platform.node() == 'Moymix-PC':
+    elif platform.node() == 'Moymix-PC':
         logger.info("检测到实验室台式机%s" % platform.node())
         root_dir = '/root/data/G'
         debug = True

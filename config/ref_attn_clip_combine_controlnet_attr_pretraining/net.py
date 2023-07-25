@@ -684,6 +684,7 @@ class Net(nn.Module):
 
         # Denoising loop
         num_warmup_steps = len(timesteps) - self.args.num_inference_steps * self.noise_scheduler.order
+        print('Start denoising loop with inference steps: %d' % self.args.num_inference_steps)
         with self.progress_bar(total=self.args.num_inference_steps) as progress_bar:
             for i, t in enumerate(timesteps):
                 # expand the latents if we are doing classifier free guidance

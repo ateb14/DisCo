@@ -23,7 +23,7 @@ class Args(BasicArgs):
     train_yaml = './blob_dir/debug_output/video_sythesis/dataset/composite/train_TiktokDance-poses.yaml'
     val_yaml = './blob_dir/debug_output/video_sythesis/dataset/composite/val_TiktokDance-poses.yaml'
     # WT: for tiktok image data dir
-    tiktok_data_root = 'keli/dataset/TikTok_dataset/'
+    tiktok_data_root = '/home/data/disco/tuning_data'
     # tiktok_ann_root = 'keli/dataset/TikTok_dataset/pair_ann'
     refer_sdvae = False
 
@@ -46,8 +46,10 @@ class Args(BasicArgs):
     drop_text = 1.0 # drop text only activate in args.null_caption, default=1.0
     scale_factor = 0.18215
     # pretrained_model_path = os.path.join(BasicArgs.root_dir, 'diffusers/stable-diffusion-v2-1')
-    pretrained_model_path = os.path.join(BasicArgs.root_dir, 'diffusers/sd-image-variations-diffusers')
-    sd15_path = os.path.join(BasicArgs.root_dir, 'diffusers/stable-diffusion-v1-5-2')
+    # pretrained_model_path = os.path.join(BasicArgs.root_dir, 'diffusers/sd-image-variations-diffusers')
+    pretrained_model_path = '/home/models/sd-image-variations-diffusers'
+    # sd15_path = os.path.join(BasicArgs.root_dir, 'diffusers/stable-diffusion-v1-5-2')
+    sd15_path = '/home/models/stable-diffusion-v1-5'
     gradient_checkpointing = True
     enable_xformers_memory_efficient_attention = True
     freeze_unet=True

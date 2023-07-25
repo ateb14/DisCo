@@ -1028,7 +1028,7 @@ class Trainer:
         eval_meter = Meter()
         eval_timer = Timer()
         with torch.no_grad():
-            eval_loader = tqdm(eval_loader, total=len(eval_loader)) if use_tqdm else eval_loader
+            eval_loader = tqdm(eval_loader, total=len(eval_loader), colour='red') if use_tqdm else eval_loader
             for inputs in eval_loader:
                 inputs = complex_to_device(inputs, self.device)
                 outputs = model_to_eval(inputs)
